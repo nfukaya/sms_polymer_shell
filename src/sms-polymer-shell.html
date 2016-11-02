@@ -21,9 +21,37 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/iron-selector/iron-selector.html">
 <link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
 
+<script src="../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+
+<link rel="import" href="../bower_components/paper-styles/demo-pages.html">
+<link rel="import" href="../bower_components/iron-demo-helpers/demo-snippet.html">
+<link rel="import" href="../bower_components/iron-demo-helpers/demo-pages-shared-styles.html">
+<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../bower_components/paper-slider/paper-slider.html">
+
 <dom-module id="sms-polymer-shell">
   <template>
-    <style>
+    <style is="custom-style" include="demo-pages-shared-styles">
+      demo-snippet {
+        --demo-snippet-demo: {
+          padding: 0;
+        }
+      }
+      .container {
+        background-color: #ccc;
+        padding: 5px;
+        margin: 0;
+      }
+      .container > div {
+        padding: 15px;
+        margin: 5px;
+        background-color: white;
+        min-height: 20px;
+      }
+      .vertical-section-container {
+        max-width: 700px
+      }
+        
       :host {
         --app-primary-color: #4285f4;
         --app-secondary-color: black;
@@ -82,6 +110,35 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         </app-header>
       </app-header-layout>
     </app-drawer-layout>
+
+    <h4>Horizontal and vertical layout</h4>
+    <h4>Horizontal and vertical layout</h4>
+    <style is="custom-style">
+      .flex {
+        @apply(--layout-horizontal);
+      }
+    </style>
+    <div class="container flex">
+      <div>one</div>
+      <div>two</div>
+      <div><paper-slider id="slider1" min="0" max="100" value="50"></paper-slider></div>
+    </div>
+    
+    <h4>Flexible children</h4>
+    <style is="custom-style">
+      .flex-horizontal {
+        @apply(--layout-horizontal);
+      }
+      .flexchild {
+        @apply(--layout-flex);
+      }
+    </style>
+
+    <div class="container flex-horizontal">
+      <div>one</div>
+      <div class="flexchild"><paper-slider id="slider2" min="0" max="200" value="50"></paper-slider></div>
+      <div>three</div>
+    </div>
   </template>
 
   <script>
